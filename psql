@@ -1,0 +1,8 @@
+#!/bin/sh
+docker run -ti --rm \
+    -v $PWD:/workdir --workdir=/workdir \
+    -v ~/.ssh:/root/.ssh \
+    --net=host \
+    --name psql \
+    --entrypoint psql \
+    postgres:9.5 $@

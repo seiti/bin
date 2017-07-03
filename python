@@ -1,0 +1,6 @@
+#!/bin/sh
+docker run -ti --rm \
+    -v $PWD:/workdir --workdir=/workdir \
+    -v ~/.ssh:/root/.ssh \
+    --net=host \
+    python:3 python $@

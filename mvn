@@ -1,0 +1,11 @@
+#!/bin/sh
+docker run -ti --rm \
+    -v $PWD:/workdir --workdir=/workdir \
+    -v ~/workspaces:/root/workspaces \
+    -v ~/.m2:/root/.m2 -e M2_HOME=/root/.m2 \
+    -v ~/.ssh:/root/.ssh \
+    -e MAVEN_OPS="-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=1024M" \
+    --name maven3 \
+    --net=host \
+    maven:3 mvn --settings /root/.m2/settings.xml $@
+ 
